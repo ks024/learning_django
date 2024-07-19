@@ -1,0 +1,36 @@
+# Byte-compiled / optimized Python files
+*.pyc
+__pycache__/
+
+# Django development server
+*.log
+
+# Local Django settings file
+local_settings.py
+
+# Database
+*.sqlite3
+*.db
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# Secret key
+*.secret_key
+
+# Virtual environment
+venv/
+.env
+
+# IDE files
+.idea/
+.vscode/
+
+# Python bytecode
+*.pyc
+
+# macOS
+.DS_Store

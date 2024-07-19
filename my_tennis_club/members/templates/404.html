@@ -1,0 +1,49 @@
+<!-- templates/404.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer; /* Ensure the cursor changes to a pointer on hover */
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>404 - Page Not Found</h1>
+    <p>The page you requested does not exist.</p>
+    <button id="goBackBtn" class="btn">Go Back</button>
+
+    <script>
+        // JavaScript to handle button click event
+        document.getElementById("goBackBtn").addEventListener("click", function() {
+            window.history.back(); // Go back to the previous page in history
+        });
+    </script>
+</body>
+</html>
