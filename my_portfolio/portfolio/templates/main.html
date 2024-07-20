@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block title %} Home - Raju Tamang {% endblock title %}
 
 {% block sidemenu %}
@@ -6,6 +7,7 @@
 {% endblock sidemenu %}
 
 {% block content %}
+{% include "about.html" %}
 {% include "skills.html" %}
 {% include "certification.html" %}
 {% include "projects.html" %}
