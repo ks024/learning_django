@@ -5,7 +5,7 @@ def main_page(request):
     sidemenus = SideMenu.objects.all()
     skills = Skill.objects.all()
     projects = Project.objects.all()
-    certifications = Certification.objects.all()
+    certifications = Certification.objects.filter(parent_certification__isnull=True)
     
     context = {
         'sidemenus': sidemenus,

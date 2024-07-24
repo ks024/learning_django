@@ -22,9 +22,10 @@ class Project(models.Model):
 
 class Certification(models.Model):
     title = models.CharField(max_length=200)
-    authority = models.CharField(max_length=100)
-    date_earned = models.DateField()
+    authority = models.CharField(max_length=100, blank=True, null=True)
+    date_earned = models.DateField(blank=True, null=True)
     verification_url = models.URLField(max_length=200, blank=True, null=True)
+    parent_certification = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='child_certification_set')
 
     def __str__(self):
         return self.title

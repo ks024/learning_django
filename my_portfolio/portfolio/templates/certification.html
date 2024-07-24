@@ -1,151 +1,46 @@
+<!-- certifications.html -->
 <section class="resume-section" id="certification">
   <div class="resume-section-content">
     <h2 class="mb-5">Certifications</h2>
     <ul class="fa-ul mb-0">
+      {% for certification in certifications %}
       <li>
         <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://www.coursera.org/account/accomplishments/certificate/Z4GWBP2QUXW2"
-          class="nav-link"
-          target="_blank"
-        >
-          Computational Thinking for Problem Solving -- University of
-          Pennsylvania | Coursera
+        <a href="{{ certification.verification_url }}" class="nav-link" target="_blank">
+          {{ certification.title }}
+          {% if certification.authority %}
+          -- {{ certification.authority }}
+          {% endif %}
         </a>
-      </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://www.linkedin.com/learning/certificates/3cc03695edbfed71e8bc09443e458b69ef52d6850a38b8f44634789336173d85"
-          class="nav-link"
-          target="_blank"
-        >
-          Career Essentials in Software Development by Microsoft and LinkedIn
-        </a>
-      </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://broadwayinfosys.com/certificate-verification-code/eyJpdiI6Ino1N01tVG9ta3ZNMHRnOVdGK2thNGc9PSIsInZhbHVlIjoiNDJSSHBaTWZYcEFpU0xDRDB1Z2FJdz09IiwibWFjIjoiNjIwNDQwYjJjMzIzMDVlMjNkMjNjODUxZjQ2NzBjZjczM2I4NGMxM2U3MDg4MmQ2YWNjODRjMDU1ODZmOWY2OSIsInRhZyI6IiJ9"
-          class="nav-link"
-          target="_blank"
-        >
-          Web Design Training -- Broadway Infosys
-        </a>
-      </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://broadwayinfosys.com/certificate-verification-code/eyJpdiI6Ill1YTRsaUc1amRCaWduYURDWTkrc2c9PSIsInZhbHVlIjoibjBCZ29aMkMvSXpOVTNwWEZHcWVwZz09IiwibWFjIjoiNjQ5MDJjMjE0N2NkZWNmMGYxZmUzNjEzZDQ2YTZjZDlkYmMzOGE4MjA0MWE4ZDdlMTg4MTJkNmFjNmJlMmMyNSIsInRhZyI6IiJ9"
-          class="nav-link"
-          target="_blank"
-        >
-          Data Science With Python -- Broadway Infosys
-        </a>
-      </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://freecodecamp.org/certification/fcce31fe3de-f029-4b5d-82b9-3db2e9e6721b/foundational-c-sharp-with-microsoft"
-          class="nav-link"
-          target="_blank"
-        >
-          Foundational C# with Microsoft -- FreeCodeCamp | Microsoft
-        </a>
-      </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://www.coursera.org/account/accomplishments/specialization/certificate/CFJUPTZKGL9H"
-          class="nav-link"
-          target="_blank"
-        >
-          IBM Data Engineering Foundations -- Coursera
-        </a>
+        
+        {% if certification.parent_certification %}
         <ul class="fa-ul mb-0">
+          {% for child_certification in certification.parent_certification_set.all %}
           <li>
-            <span class="fa-li"
-              ><i class="fas fa-solid fa-medal text-warning"></i
-            ></span>
-            <a
-              href="https://www.coursera.org/account/accomplishments/certificate/BGUN9F4US5CZ"
-              class="nav-link"
-              target="_blank"
-            >
-              Introduction to Data Engineering
+            <span class="fa-li"><i class="fas fa-solid fa-medal text-warning"></i></span>
+            <a href="{{ child_certification.verification_url }}" class="nav-link" target="_blank">
+              {{ child_certification.title }}
             </a>
           </li>
-          <li>
-            <span class="fa-li"
-              ><i class="fas fa-solid fa-medal text-warning"></i
-            ></span>
-            <a
-              href="https://www.coursera.org/account/accomplishments/certificate/M5MTBPAPZ4G9"
-              class="nav-link"
-              target="_blank"
-            >
-              Python for Data Science, AI & Development
-            </a>
-          </li>
-          <li>
-            <span class="fa-li"
-              ><i class="fas fa-solid fa-medal text-warning"></i
-            ></span>
-            <a
-              href="https://www.coursera.org/account/accomplishments/certificate/AMWUPAN6M33L"
-              class="nav-link"
-              target="_blank"
-            >
-              Python Project for Data Engineering
-            </a>
-          </li>
-          <li>
-            <span class="fa-li"
-              ><i class="fas fa-solid fa-medal text-warning"></i
-            ></span>
-            <a
-              href="https://www.coursera.org/account/accomplishments/certificate/62Y5534PM2ZL"
-              class="nav-link"
-              target="_blank"
-            >
-              Databases and SQL for Data Science with Python
-            </a>
-          </li>
-          <li>
-            <span class="fa-li"
-              ><i class="fas fa-solid fa-medal text-warning"></i
-            ></span>
-            <a
-              href="https://www.coursera.org/account/accomplishments/certificate/6QH2FDR3MPBE"
-              class="nav-link"
-              target="_blank"
-            >
-              Introduction to Relational Databases (RDBMS)
-            </a>
-          </li>
+          {% endfor %}
         </ul>
+        {% endif %}
+        
+        {% if certification.child_certification_set.all %}
+        <ul class="fa-ul mb-0">
+          {% for child_certification in certification.child_certification_set.all %}
+          <li>
+            <span class="fa-li"><i class="fas fa-solid fa-medal text-warning"></i></span>
+            <a href="{{ child_certification.verification_url }}" class="nav-link" target="_blank">
+              {{ child_certification.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        
       </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://www.credly.com/badges/fa6b1b56-d0d3-43fa-8c3d-6efdec2b9f6a/linked_in_profile"
-          class="nav-link"
-          target="_blank"
-        >
-          Linux Commands & Shell Scripting Essentials V2 -- IBM Developer Skills
-          Network
-        </a>
-      </li>
-      <li>
-        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-        <a
-          href="https://www.coursera.org/account/accomplishments/certificate/HUMUAFE6YTAT"
-          class="nav-link"
-          target="_blank"
-        >
-          Relational Database Administration (DBA)
-        </a>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 </section>
